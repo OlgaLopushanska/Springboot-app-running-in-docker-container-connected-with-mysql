@@ -1,9 +1,6 @@
 package dev.basic.mysql.springbootrestapiwithmysql.controller;
 
 import dev.basic.mysql.springbootrestapiwithmysql.dto.UserDto;
-import dev.basic.mysql.springbootrestapiwithmysql.entity.User;
-import dev.basic.mysql.springbootrestapiwithmysql.exception.ErrorDetails;
-import dev.basic.mysql.springbootrestapiwithmysql.exception.UserNotFoundException;
 import dev.basic.mysql.springbootrestapiwithmysql.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -13,9 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Tag(name = "CRUD REST APIs for User Resource",
@@ -76,15 +71,4 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity<>("User was deleted", HttpStatus.OK);
     }
-
-//    @ExceptionHandler(UserNotFoundException.class)
-//    public ResponseEntity<ErrorDetails> userNotFoundException(UserNotFoundException exception,
-//                                                                  WebRequest webRequest) {
-//        ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(),
-//                exception.getMessage(),
-//                webRequest.getDescription(false),
-//                "USER_NOT_FOUND");
-//        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
-//
-//    }
 }
